@@ -11,7 +11,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * {@code almacen_id}. La relación es opcional (un producto puede no
  * pertenecer a ningún almacén).</p>
  *
- * <h3>Restricciones de validación (controlador):</h3>
+ * <h2>Restricciones de validación (controlador):</h2>
  * <ul>
  *   <li>{@code nombre}   — no nulo ni vacío.</li>
  *   <li>{@code cantidad} — entero ≥ 0.</li>

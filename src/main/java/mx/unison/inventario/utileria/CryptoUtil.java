@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * <p>Provee el cálculo de hash <strong>MD5</strong> para la verificación
  * de contraseñas almacenadas en la base de datos.</p>
  *
- * <h3>Nota de seguridad:</h3>
+ * <h2>Nota de seguridad:</h2>
  * <p>MD5 no es apto para producción en sistemas con datos sensibles.
  * Esta implementación es adecuada para el contexto académico del proyecto.
  * Para producción real se recomienda {@code BCrypt} o {@code Argon2}.</p>

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * <p>Mapeada a la tabla {@code usuarios} mediante anotaciones de ORMLite.
  * Los campos están validados por el controlador antes de ser persistidos.</p>
  *
- * <h3>Roles disponibles:</h3>
+ * <h2>Roles disponibles:</h2>
  * <ul>
  *   <li>{@code ADMIN}     — acceso total al sistema.</li>
  *   <li>{@code PRODUCTOS} — solo gestión de productos.</li>

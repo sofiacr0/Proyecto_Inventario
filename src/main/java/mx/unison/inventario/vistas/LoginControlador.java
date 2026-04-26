@@ -18,7 +18,7 @@ import java.util.Optional;
  * credenciales del usuario, delega la autenticación al
  * {@link AuthControlador} y navega al menú principal si tiene éxito.</p>
  *
- * <h3>Binding con FXML:</h3>
+ * <h2>Binding con FXML:</h2>
  * <ul>
  *   <li>{@code #campoUsuario}    — {@link TextField} para el nombre de usuario.</li>
  *   <li>{@code #campoPassword}   — {@link PasswordField} para la contraseña.</li>

@@ -7,11 +7,11 @@ package mx.unison.inventario.modelos;
  * los controladores y vistas puedan consultar quién está conectado sin
  * necesidad de pasar el usuario como parámetro entre pantallas.</p>
  *
- * <h3>Ciclo de vida:</h3>
+ * <h2>Ciclo de vida:</h2>
  * <ol>
  *   <li>Al arrancar la app, {@code SesionUsuario.getInstancia()} retorna
  *       una instancia sin usuario ({@link #isAutenticado()} = {@code false}).</li>
- *   <li>Tras autenticación exitosa, {@link LoginControlador} llama a
+ *   <li>Tras autenticación exitosa, {@link mx.unison.inventario.vistas.LoginControlador} llama a
  *       {@link #iniciarSesion(UsuarioModel)}.</li>
  *   <li>Al cerrar sesión, {@link #cerrarSesion()} limpia el estado.</li>
  * </ol>

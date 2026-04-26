@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * cada pantalla se carga una sola vez y se reutiliza en accesos subsecuentes,
  * conservando el estado de sus componentes.</p>
  *
- * <h3>Vistas registradas:</h3>
+ * <h2>Vistas registradas:</h2>
  * <ul>
  *   <li>{@code LOGIN}     — {@link mx.unison.inventario.vistas.LoginControlador}</li>
  *   <li>{@code INICIO}    — {@link mx.unison.inventario.vistas.InicioControlador}</li>

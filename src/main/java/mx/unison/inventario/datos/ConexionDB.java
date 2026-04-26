@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * {@link ConnectionSource} durante todo el ciclo de vida de la aplicación,
  * evitando el coste de abrir múltiples conexiones.</p>
  *
- * <h3>Inicialización:</h3>
+ * <h2>Inicialización:</h2>
  * <ol>
  *   <li>Abre la conexión JDBC a {@code db/inventario_v2.db}.</li>
  *   <li>Crea las tablas si no existen (idempotente).</li>
