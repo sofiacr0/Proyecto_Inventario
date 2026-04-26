@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="mx.unison.inventario.vistas.LoginControlador"
+      prefWidth="350" prefHeight="300">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Bienvenida -->
+    <Label fx:id="labelBienvenida"
+           text="Bienvenido al Sistema de Inventario"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <!-- Usuario -->
+    <TextField fx:id="campoUsuario"
+               promptText="Usuario"
+               prefWidth="250"/>
+
+    <!-- Contraseña -->
+    <PasswordField fx:id="campoPassword"
+                   promptText="Contraseña"
+                   prefWidth="250"/>
+
+    <!-- Botón -->
+    <Button fx:id="btnLogin"
+            text="Iniciar sesión"
+            onAction="#manejarLogin"
+            prefWidth="200"/>
+
+    <!-- Error -->
+    <Label fx:id="labelError"
+           textFill="red"
+           visible="false"/>
+
+</VBox>

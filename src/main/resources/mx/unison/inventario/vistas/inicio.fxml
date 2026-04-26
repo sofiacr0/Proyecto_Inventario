@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="mx.unison.inventario.vistas.InicioControlador"
+      prefWidth="400" prefHeight="300">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Información del usuario -->
+    <Label fx:id="labelUsuario" text="Usuario: -" style="-fx-font-size: 14px;"/>
+    <Label fx:id="labelRol" text="Rol: -" style="-fx-font-size: 14px;"/>
+
+    <!-- Botones de navegación -->
+    <Button text="Ir a Productos"
+            onAction="#irProductos"
+            prefWidth="200"/>
+
+    <Button text="Ir a Almacenes"
+            onAction="#irAlmacenes"
+            prefWidth="200"/>
+
+    <!-- Cerrar sesión -->
+    <Button text="Cerrar sesión"
+            onAction="#cerrarSesion"
+            prefWidth="200"
+            style="-fx-background-color: #d9534f; -fx-text-fill: white;"/>
+
+</VBox>

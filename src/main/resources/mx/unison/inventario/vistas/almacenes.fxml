@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="mx.unison.inventario.vistas.AlmacenesControlador"
+      prefWidth="800" prefHeight="500">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Barra superior -->
+    <HBox spacing="10">
+        <Button text="← Regresar" onAction="#regresar"/>
+        <TextField fx:id="campoBusqueda" promptText="Buscar..." HBox.hgrow="ALWAYS"/>
+        <Button text="Agregar" onAction="#agregar"/>
+        <Button text="Editar" onAction="#editar"/>
+        <Button text="Eliminar" onAction="#eliminar"/>
+    </HBox>
+
+    <!-- Tabla -->
+    <TableView fx:id="tablaAlmacenes" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+            <TableColumn fx:id="colUbicacion" text="Ubicación" prefWidth="150"/>
+            <TableColumn fx:id="colCreado" text="Creado" prefWidth="150"/>
+            <TableColumn fx:id="colModificado" text="Modificado" prefWidth="150"/>
+            <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <!-- Footer -->
+    <Label fx:id="labelConteo" text="Total: 0"/>
+</VBox>
