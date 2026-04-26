@@ -12,6 +12,16 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Controlador de dominio para la gestión de productos.
+ *
+ * <p>Encapsula la lógica de negocio de productos: validaciones de campos
+ * obligatorios, rangos de valores y coordinación con {@link ProductoDao}.
+ * La capa de vista delega aquí todas las operaciones CRUD.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class ProductoControlador {
 
     private static final Logger LOG = Logger.getLogger(ProductoControlador.class.getName());
@@ -31,14 +41,36 @@ public class ProductoControlador {
         }
     }
 
+    /**
+     * Constructor para inyección de dependencias en pruebas.
+     *
+     * @param productoDao DAO de productos a utilizar
+     */
     public ProductoControlador(ProductoDao productoDao) {
         this.productoDao = productoDao;
     }
 
+    /**
+     * Retorna todos los productos registrados.
+     *
+     * @return lista de productos; nunca {@code null}
+     */
     public List<ProductoModel> listarProductos() {
         return productoDao.listarTodos();
     }
 
+    /**
+     * Crea un nuevo producto previa validación de todos los campos.
+     *
+     * @param nombre      nombre del producto; no puede ser vacío
+     * @param descripcion descripción opcional
+     * @param cantidad    cantidad ≥ 0
+     * @param precio      precio ≥ 0.0
+     * @param almacen     almacén asociado, o {@code null} si no aplica
+     * @return el {@link ProductoModel} creado con su ID generado
+     * @throws IllegalArgumentException si algún campo obligatorio es inválido
+     * @throws RuntimeException         si ocurre un error de persistencia
+     */
     public ProductoModel crear(String nombre, String descripcion,
                                int cantidad, double precio, AlmacenModel almacen) {
         validar(nombre, cantidad, precio);
@@ -53,6 +85,18 @@ public class ProductoControlador {
         }
     }
 
+    /**
+     * Actualiza un producto existente previa validación.
+     *
+     * @param producto    producto a actualizar
+     * @param nombre      nuevo nombre
+     * @param descripcion nueva descripción
+     * @param cantidad    nueva cantidad ≥ 0
+     * @param precio      nuevo precio ≥ 0.0
+     * @param almacen     nuevo almacén, o {@code null} para desvincular
+     * @throws IllegalArgumentException si algún campo obligatorio es inválido
+     * @throws RuntimeException         si ocurre un error de persistencia
+     */
     public void actualizar(ProductoModel producto, String nombre, String descripcion,
                            int cantidad, double precio, AlmacenModel almacen) {
         validar(nombre, cantidad, precio);
@@ -69,6 +113,12 @@ public class ProductoControlador {
         }
     }
 
+    /**
+     * Elimina el producto con el ID indicado.
+     *
+     * @param id identificador del producto a eliminar
+     * @throws RuntimeException si ocurre un error de persistencia
+     */
     public void eliminar(int id) {
         try {
             productoDao.eliminar(id);
@@ -78,15 +128,35 @@ public class ProductoControlador {
         }
     }
 
+    /**
+     * Busca productos cuyo nombre contenga el texto indicado.
+     *
+     * @param texto texto a buscar
+     * @return lista de productos coincidentes; nunca {@code null}
+     */
     public List<ProductoModel> buscar(String texto) {
         if (texto == null || texto.isBlank()) return listarProductos();
         return productoDao.buscarPorNombre(texto.trim());
     }
 
+    /**
+     * Busca un producto por ID.
+     *
+     * @param id identificador del producto
+     * @return {@link Optional} con el producto, o vacío si no existe
+     */
     public Optional<ProductoModel> buscarPorId(int id) {
         return productoDao.buscarPorId(id);
     }
 
+    /**
+     * Valida los campos obligatorios de un producto.
+     *
+     * @param nombre   nombre del producto
+     * @param cantidad cantidad en inventario
+     * @param precio   precio unitario
+     * @throws IllegalArgumentException si alguna validación falla
+     */
     private void validar(String nombre, int cantidad, double precio) {
         if (nombre == null || nombre.trim().isEmpty())
             throw new IllegalArgumentException("El nombre del producto no puede estar vacío.");

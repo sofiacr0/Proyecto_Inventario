@@ -3,6 +3,25 @@ package mx.unison.inventario.modelos;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * Entidad que representa un <strong>producto</strong> del inventario.
+ *
+ * <p>Mapeada a la tabla {@code productos} con ORMLite. Mantiene una
+ * clave foránea hacia {@link AlmacenModel} mediante el campo
+ * {@code almacen_id}. La relación es opcional (un producto puede no
+ * pertenecer a ningún almacén).</p>
+ *
+ * <h3>Restricciones de validación (controlador):</h3>
+ * <ul>
+ *   <li>{@code nombre}   — no nulo ni vacío.</li>
+ *   <li>{@code cantidad} — entero ≥ 0.</li>
+ *   <li>{@code precio}   — double ≥ 0.0.</li>
+ * </ul>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ * @see AlmacenModel
+ */
 @DatabaseTable(tableName = "productos")
 public class ProductoModel {
 

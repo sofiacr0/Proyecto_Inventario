@@ -14,6 +14,16 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * DAO (Data Access Object) para la entidad {@link ProductoModel}.
+ *
+ * <p>Encapsula toda la lógica de acceso a la tabla {@code productos},
+ * gestionando automáticamente los timestamps y la relación con
+ * {@link AlmacenModel}.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class ProductoDao {
 
     private static final Logger LOG = Logger.getLogger(ProductoDao.class.getName());

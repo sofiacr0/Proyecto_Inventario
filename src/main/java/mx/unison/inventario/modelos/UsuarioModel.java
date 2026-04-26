@@ -5,6 +5,22 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.time.LocalDateTime;
 
+/**
+ * Entidad que representa un <strong>usuario</strong> del sistema de inventario.
+ *
+ * <p>Mapeada a la tabla {@code usuarios} mediante anotaciones de ORMLite.
+ * Los campos están validados por el controlador antes de ser persistidos.</p>
+ *
+ * <h3>Roles disponibles:</h3>
+ * <ul>
+ *   <li>{@code ADMIN}     — acceso total al sistema.</li>
+ *   <li>{@code PRODUCTOS} — solo gestión de productos.</li>
+ *   <li>{@code ALMACENES} — solo gestión de almacenes.</li>
+ * </ul>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 @DatabaseTable(tableName = "usuarios")
 public class UsuarioModel {
 

@@ -12,6 +12,16 @@ import mx.unison.inventario.navegacion.Navegador;
 
 import java.util.Optional;
 
+/**
+ * Controlador JavaFX de la vista de gestión de almacenes.
+ *
+ * <p>Muestra la lista de almacenes en un {@link TableView} y permite
+ * crear, editar y eliminar registros mediante diálogos integrados.
+ * Toda la lógica de negocio se delega al {@link AlmacenControlador}.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class AlmacenesControlador implements NecesitaNavegador {
 
     @FXML private TableView<AlmacenModel>       tablaAlmacenes;

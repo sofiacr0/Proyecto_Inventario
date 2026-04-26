@@ -14,6 +14,16 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * DAO (Data Access Object) para la entidad {@link UsuarioModel}.
+ *
+ * <p>Encapsula toda la lógica de acceso a la tabla {@code usuarios},
+ * delegando las operaciones CRUD a ORMLite y exponiendo una API
+ * de alto nivel orientada al dominio.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class UsuarioDao {
 
     private static final Logger LOG = Logger.getLogger(UsuarioDao.class.getName());

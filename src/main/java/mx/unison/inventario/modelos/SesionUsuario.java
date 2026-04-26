@@ -1,5 +1,24 @@
 package mx.unison.inventario.modelos;
 
+/**
+ * Mantiene la sesión del usuario autenticado actualmente en la aplicación.
+ *
+ * <p>Implementado como <em>Singleton</em> de instancia única para que todos
+ * los controladores y vistas puedan consultar quién está conectado sin
+ * necesidad de pasar el usuario como parámetro entre pantallas.</p>
+ *
+ * <h3>Ciclo de vida:</h3>
+ * <ol>
+ *   <li>Al arrancar la app, {@code SesionUsuario.getInstancia()} retorna
+ *       una instancia sin usuario ({@link #isAutenticado()} = {@code false}).</li>
+ *   <li>Tras autenticación exitosa, {@link LoginControlador} llama a
+ *       {@link #iniciarSesion(UsuarioModel)}.</li>
+ *   <li>Al cerrar sesión, {@link #cerrarSesion()} limpia el estado.</li>
+ * </ol>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class SesionUsuario {
 
     /** Instancia única del Singleton. */

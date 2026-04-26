@@ -11,6 +11,25 @@ import mx.unison.inventario.navegacion.Navegador;
 
 import java.util.Optional;
 
+/**
+ * Controlador JavaFX de la vista de inicio de sesión.
+ *
+ * <p>Gestiona la interacción del formulario de login: captura las
+ * credenciales del usuario, delega la autenticación al
+ * {@link AuthControlador} y navega al menú principal si tiene éxito.</p>
+ *
+ * <h3>Binding con FXML:</h3>
+ * <ul>
+ *   <li>{@code #campoUsuario}    — {@link TextField} para el nombre de usuario.</li>
+ *   <li>{@code #campoPassword}   — {@link PasswordField} para la contraseña.</li>
+ *   <li>{@code #btnLogin}        — botón que dispara la autenticación.</li>
+ *   <li>{@code #labelError}      — muestra mensajes de error al usuario.</li>
+ *   <li>{@code #labelBienvenida} — mensaje de bienvenida animado.</li>
+ * </ul>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class LoginControlador implements NecesitaNavegador {
 
     @FXML private TextField     campoUsuario;

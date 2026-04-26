@@ -3,6 +3,17 @@ package mx.unison.inventario.modelos;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * Entidad que representa un <strong>almacén</strong> físico o lógico
+ * donde se guardan los productos del inventario.
+ *
+ * <p>Mapeada a la tabla {@code almacenes} mediante anotaciones de ORMLite.
+ * Soporta timestamping automático de creación y modificación.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ * @see ProductoModel
+ */
 @DatabaseTable(tableName = "almacenes")
 public class AlmacenModel {
 

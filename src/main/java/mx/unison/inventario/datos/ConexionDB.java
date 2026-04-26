@@ -13,6 +13,23 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Administra la conexión única a la base de datos SQLite mediante ORMLite.
+ *
+ * <p>Implementado como <em>Singleton</em> para reutilizar la misma
+ * {@link ConnectionSource} durante todo el ciclo de vida de la aplicación,
+ * evitando el coste de abrir múltiples conexiones.</p>
+ *
+ * <h3>Inicialización:</h3>
+ * <ol>
+ *   <li>Abre la conexión JDBC a {@code db/inventario_v2.db}.</li>
+ *   <li>Crea las tablas si no existen (idempotente).</li>
+ *   <li>Inserta los tres usuarios base si la tabla de usuarios está vacía.</li>
+ * </ol>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class ConexionDB {
 
     private static final Logger LOG = Logger.getLogger(ConexionDB.class.getName());

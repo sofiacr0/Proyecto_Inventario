@@ -3,6 +3,15 @@ package mx.unison.inventario.utileria;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Utilidades de formato de fecha y hora para el sistema de inventario.
+ *
+ * <p>Centraliza el formato ISO-8601 usado en todos los timestamps de la BD,
+ * evitando inconsistencias entre las distintas capas del sistema.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public final class FechaUtil {
 
     /** Formato ISO-8601 estándar sin zona horaria. */

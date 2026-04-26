@@ -16,6 +16,17 @@ import mx.unison.inventario.navegacion.Navegador;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controlador JavaFX de la vista de gestión de productos.
+ *
+ * <p>Muestra la lista de productos en un {@link TableView} y permite
+ * crear, editar y eliminar registros. El formulario incluye un
+ * {@link ComboBox} que carga dinámicamente los almacenes disponibles.
+ * Toda la lógica de negocio se delega al {@link ProductoControlador}.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class ProductosControlador implements NecesitaNavegador {
 
     @FXML private TableView<ProductoModel>          tablaProductos;

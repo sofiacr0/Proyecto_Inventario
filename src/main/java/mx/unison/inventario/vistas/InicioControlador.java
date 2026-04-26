@@ -7,6 +7,15 @@ import mx.unison.inventario.modelos.SesionUsuario;
 import mx.unison.inventario.navegacion.NecesitaNavegador;
 import mx.unison.inventario.navegacion.Navegador;
 
+/**
+ * Controlador JavaFX de la vista del menú principal (pantalla de inicio).
+ *
+ * <p>Muestra el nombre y rol del usuario autenticado y provee botones
+ * de navegación hacia los módulos de productos, almacenes y cierre de sesión.</p>
+ *
+ * @author Sistema de Inventario v2 — UNISON
+ * @version 2.0
+ */
 public class InicioControlador implements NecesitaNavegador {
 
     @FXML private Label labelUsuario;
