@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"mx.unison.inventario.app"},{"l":"mx.unison.inventario.controladores"},{"l":"mx.unison.inventario.datos"},{"l":"mx.unison.inventario.modelos"},{"l":"mx.unison.inventario.navegacion"},{"l":"mx.unison.inventario.utileria"},{"l":"mx.unison.inventario.vistas"}];updateSearchResults();
