@@ -3,40 +3,83 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox spacing="15" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="mx.unison.inventario.vistas.LoginControlador"
-      prefWidth="350" prefHeight="300">
+<!--
+  Login View — Sistema de Inventario v2.0
+  Diseño UNISON · Paleta azul/dorado · Segoe UI · Bordes 4px
+-->
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="mx.unison.inventario.vistas.LoginControlador"
+           styleClass="login-root"
+           stylesheets="@../css/inventario.css"
+           prefWidth="1000" prefHeight="640">
 
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+    <!-- Patrón decorativo de fondo -->
+    <VBox alignment="CENTER" spacing="0">
 
-    <!-- Bienvenida -->
-    <Label fx:id="labelBienvenida"
-           text="Bienvenido al Sistema de Inventario"
-           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <!-- Tarjeta de login centrada -->
+        <VBox styleClass="login-card" alignment="TOP_CENTER" maxWidth="420" minWidth="380">
 
-    <!-- Usuario -->
-    <TextField fx:id="campoUsuario"
-               promptText="Usuario"
-               prefWidth="250"/>
+            <!-- Encabezado azul con marca UNISON -->
+            <VBox styleClass="login-header" alignment="CENTER" spacing="6">
+                <!-- Ícono UNISON (texto estilizado) -->
+                <Label text="📦" style="-fx-font-size: 40px; -fx-text-fill: #f8bb00;"/>
+                <Label text="Sistema de Inventario" styleClass="label-title"/>
+                <Label text="Universidad de Sonora · UNISON" styleClass="label-subtitle"/>
+                <Region prefHeight="4"/>
+                <!-- Barra dorada decorativa -->
+                <Region prefHeight="3" prefWidth="60"
+                        style="-fx-background-color: #f8bb00; -fx-background-radius: 2px;"/>
+            </VBox>
 
-    <!-- Contraseña -->
-    <PasswordField fx:id="campoPassword"
-                   promptText="Contraseña"
-                   prefWidth="250"/>
+            <!-- Cuerpo del formulario -->
+            <VBox styleClass="login-body" spacing="18">
 
-    <!-- Botón -->
-    <Button fx:id="btnLogin"
-            text="Iniciar sesión"
-            onAction="#manejarLogin"
-            prefWidth="200"/>
+                <!-- Campo Usuario -->
+                <VBox spacing="6">
+                    <Label text="Usuario" styleClass="login-field-label"/>
+                    <TextField fx:id="campoUsuario"
+                               promptText="Ingresa tu usuario"
+                               prefWidth="340"/>
+                </VBox>
 
-    <!-- Error -->
-    <Label fx:id="labelError"
-           textFill="red"
-           visible="false"/>
+                <!-- Campo Contraseña -->
+                <VBox spacing="6">
+                    <Label text="Contraseña" styleClass="login-field-label"/>
+                    <PasswordField fx:id="campoPassword"
+                                   promptText="Ingresa tu contraseña"
+                                   prefWidth="340"/>
+                </VBox>
 
-</VBox>
+                <!-- Mensaje de error -->
+                <Label fx:id="labelError"
+                       styleClass="label-error"
+                       visible="false"
+                       text="Usuario o contraseña incorrectos."
+                       wrapText="true"
+                       prefWidth="340"/>
+
+                <Region prefHeight="4"/>
+
+                <!-- Botón login dorado -->
+                <Button fx:id="btnLogin"
+                        text="Iniciar sesión"
+                        styleClass="btn-gold"
+                        prefWidth="340"
+                        onAction="#manejarLogin"/>
+
+                <!-- Divisor -->
+                <Region styleClass="login-divider" prefWidth="340"/>
+
+                <!-- Nota informativa -->
+                <Label text="Sistema de acceso restringido · UNISON 2026"
+                       styleClass="label-muted"
+                       alignment="CENTER"
+                       prefWidth="340"
+                       style="-fx-alignment: CENTER; -fx-text-alignment: center;"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</StackPane>

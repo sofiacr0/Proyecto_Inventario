@@ -4,32 +4,148 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="20" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="mx.unison.inventario.vistas.InicioControlador"
-      prefWidth="400" prefHeight="300">
+<!--
+  Inicio (Dashboard) View — Sistema de Inventario v2.0
+  Sidebar UNISON · Cards de estadísticas · Segoe UI
+-->
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mx.unison.inventario.vistas.InicioControlador"
+            stylesheets="@../css/inventario.css"
+            prefWidth="1100" prefHeight="680">
 
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+    <!-- ── SIDEBAR IZQUIERDA ─────────────────────────────────────────── -->
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
 
-    <!-- Información del usuario -->
-    <Label fx:id="labelUsuario" text="Usuario: -" style="-fx-font-size: 14px;"/>
-    <Label fx:id="labelRol" text="Rol: -" style="-fx-font-size: 14px;"/>
+            <!-- Logo UNISON -->
+            <VBox styleClass="sidebar-header" spacing="4">
+                <Label text="📦 Inventario" styleClass="sidebar-logo-text"/>
+                <Label text="SISTEMA UNISON v2.0" styleClass="sidebar-logo-sub"/>
+            </VBox>
 
-    <!-- Botones de navegación -->
-    <Button text="Ir a Productos"
-            onAction="#irProductos"
-            prefWidth="200"/>
+            <!-- Separador -->
+            <Region styleClass="sidebar-separator"/>
 
-    <Button text="Ir a Almacenes"
-            onAction="#irAlmacenes"
-            prefWidth="200"/>
+            <!-- Sección menú -->
+            <VBox spacing="4" style="-fx-padding: 16px 10px 10px 10px;">
+                <Label text="NAVEGACIÓN" styleClass="sidebar-section-label"
+                       style="-fx-padding: 0px 10px 6px 10px;"/>
 
-    <!-- Cerrar sesión -->
-    <Button text="Cerrar sesión"
-            onAction="#cerrarSesion"
-            prefWidth="200"
-            style="-fx-background-color: #d9534f; -fx-text-fill: white;"/>
+                <Button text="🏠  Inicio" styleClass="btn-nav-active"
+                        onAction="#irInicio"/>
+                <Button text="📦  Productos" styleClass="btn-nav"
+                        onAction="#irProductos"/>
+                <Button text="🏭  Almacenes" styleClass="btn-nav"
+                        onAction="#irAlmacenes"/>
+            </VBox>
 
-</VBox>
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Panel usuario -->
+            <VBox styleClass="sidebar-separator"/>
+            <VBox styleClass="sidebar-user-panel" spacing="4">
+                <Label fx:id="labelUsuario"
+                       styleClass="sidebar-user-name"
+                       text="Usuario"/>
+
+                <Label fx:id="labelRol"
+                       styleClass="sidebar-user-role"
+                       text="Rol"/>
+
+                <Region prefHeight="8"/>
+
+                <Button text="⎋  Cerrar sesión"
+                        styleClass="btn-nav-logout"
+                        onAction="#cerrarSesion"/>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- ── CONTENIDO PRINCIPAL ────────────────────────────────────────── -->
+    <center>
+        <VBox spacing="0">
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="12">
+                <Label text="Dashboard" styleClass="topbar-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="labelBienvenida" styleClass="label-muted"
+                       text="Bienvenido al sistema"/>
+            </HBox>
+
+            <!-- Área de contenido -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        style="-fx-background-color: #f4f6f9;">
+                <VBox styleClass="content-area" spacing="24">
+
+                    <!-- Encabezado de sección -->
+                    <VBox spacing="4">
+                        <Label text="Resumen del sistema" styleClass="label-section"/>
+                        <Label text="Selecciona un módulo para comenzar a gestionar el inventario."
+                               styleClass="label-muted"/>
+                    </VBox>
+
+                    <!-- Cards de estadísticas -->
+                    <HBox spacing="16">
+
+                        <!-- Card Productos -->
+                        <HBox styleClass="card-stat" spacing="0" HBox.hgrow="ALWAYS"
+                              onMouseClicked="#irProductos" style="-fx-cursor: hand;">
+                            <Region styleClass="card-accent-blue"/>
+                            <VBox spacing="6" style="-fx-padding: 0px 0px 0px 16px;">
+                                <Label text="📦" style="-fx-font-size: 28px;"/>
+                                <Label fx:id="labelConteoProductos"
+                                       text="0" styleClass="card-stat-number"/>
+                                <Label text="Productos registrados"
+                                       styleClass="card-stat-label"/>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Card Almacenes -->
+                        <HBox styleClass="card-stat" spacing="0" HBox.hgrow="ALWAYS"
+                              onMouseClicked="#irAlmacenes" style="-fx-cursor: hand;">
+                            <Region styleClass="card-accent-gold"/>
+                            <VBox spacing="6" style="-fx-padding: 0px 0px 0px 16px;">
+                                <Label text="🏭" style="-fx-font-size: 28px;"/>
+                                <Label fx:id="labelConteoAlmacenes"
+                                       text="0" styleClass="card-stat-number"
+                                       style="-fx-text-fill: #d99e30;"/>
+                                <Label text="Almacenes registrados"
+                                       styleClass="card-stat-label"/>
+                            </VBox>
+                        </HBox>
+
+                    </HBox>
+
+                    <!-- Accesos rápidos -->
+                    <VBox styleClass="card" spacing="16">
+                        <Label text="Accesos rápidos" styleClass="label-card-title"/>
+                        <HBox spacing="12">
+                            <Button text="+ Nuevo producto"
+                                    styleClass="btn-primary"
+                                    onAction="#irProductos"/>
+                            <Button text="+ Nuevo almacén"
+                                    styleClass="btn-secondary"
+                                    onAction="#irAlmacenes"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Info del sistema -->
+                    <VBox styleClass="card" spacing="10">
+                        <Label text="Información del sistema" styleClass="label-card-title"/>
+                        <Label text="Sistema de Inventario v2.0 · Desarrollado en JavaFX + ORMLite"
+                               styleClass="label-muted"/>
+                        <Label text="Universidad de Sonora · Verificación y Validación de Software · 2026"
+                               styleClass="label-muted"/>
+                    </VBox>
+
+                </VBox>
+            </ScrollPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>

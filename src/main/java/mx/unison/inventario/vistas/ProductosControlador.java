@@ -39,6 +39,7 @@ public class ProductosControlador implements NecesitaNavegador {
     @FXML private TableColumn<ProductoModel, String>  colUsuario;
     @FXML private TextField campoBusqueda;
     @FXML private Label     labelConteo;
+    @FXML private TableColumn<ProductoModel, String> colCreado;
 
     private Navegador navegador;
     private final ProductoControlador controlador = new ProductoControlador();
@@ -57,6 +58,7 @@ public class ProductosControlador implements NecesitaNavegador {
             new javafx.beans.property.SimpleStringProperty(
                 data.getValue().getNombreAlmacen()));
         colUsuario.setCellValueFactory(new PropertyValueFactory<>("ultimoUsuario"));
+        colCreado.setCellValueFactory(new PropertyValueFactory<>("fechaHoraCreacion"));
         cargarDatos();
 
         // Búsqueda en tiempo real
@@ -65,6 +67,27 @@ public class ProductosControlador implements NecesitaNavegador {
 
     @Override
     public void setNavegador(Navegador navegador) { this.navegador = navegador; }
+
+    @FXML
+    public void irInicio() {
+        navegador.navegar("INICIO");
+    }
+
+    @FXML
+    public void irProductos() {
+        navegador.navegar("PRODUCTOS");
+    }
+
+    @FXML
+    public void irAlmacenes() {
+        navegador.navegar("ALMACENES");
+    }
+
+    @FXML
+    public void cerrarSesion() {
+        navegador.invalidarTodaLaCache();
+        navegador.navegar("LOGIN");
+    }
 
     /** Regresa al menú principal. */
     @FXML public void regresar() { navegador.navegar("INICIO"); }

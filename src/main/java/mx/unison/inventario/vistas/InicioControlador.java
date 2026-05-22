@@ -20,6 +20,9 @@ public class InicioControlador implements NecesitaNavegador {
 
     @FXML private Label labelUsuario;
     @FXML private Label labelRol;
+    @FXML private Label labelBienvenida;
+    @FXML private Label labelConteoProductos;
+    @FXML private Label labelConteoAlmacenes;
 
     private Navegador navegador;
     private final AuthControlador authControlador = new AuthControlador();
@@ -35,6 +38,13 @@ public class InicioControlador implements NecesitaNavegador {
     @Override
     public void setNavegador(Navegador navegador) {
         this.navegador = navegador;
+    }
+
+    /** Navega al módulo de inicio. */
+    @FXML
+    public void irInicio() {
+        navegador.invalidarCache("INICIO");
+        navegador.navegar("INICIO");
     }
 
     /** Navega al módulo de gestión de productos. */

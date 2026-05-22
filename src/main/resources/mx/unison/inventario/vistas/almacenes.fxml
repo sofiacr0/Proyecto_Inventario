@@ -2,37 +2,104 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="mx.unison.inventario.vistas.AlmacenesControlador"
-      prefWidth="800" prefHeight="500">
+<!--
+  Almacenes View — Sistema de Inventario v2.0
+  TableView tipado · Sidebar UNISON · Diseño Fluent
+-->
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mx.unison.inventario.vistas.AlmacenesControlador"
+            stylesheets="@../css/inventario.css"
+            prefWidth="1100" prefHeight="680">
 
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
+    <!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+            <VBox styleClass="sidebar-header" spacing="4">
+                <Label text="📦 Inventario" styleClass="sidebar-logo-text"/>
+                <Label text="SISTEMA UNISON v2.0" styleClass="sidebar-logo-sub"/>
+            </VBox>
+            <Region styleClass="sidebar-separator"/>
+            <VBox spacing="4" style="-fx-padding: 16px 10px 10px 10px;">
+                <Label text="NAVEGACIÓN" styleClass="sidebar-section-label"
+                       style="-fx-padding: 0px 10px 6px 10px;"/>
+                <Button text="🏠  Inicio" styleClass="btn-nav" onAction="#regresar"/>
+                <Button text="📦  Productos" styleClass="btn-nav" onAction="#irProductos"/>
+                <Button text="🏭  Almacenes" styleClass="btn-nav-active"/>
+            </VBox>
+            <Region VBox.vgrow="ALWAYS"/>
+            <VBox styleClass="sidebar-separator"/>
+            <VBox styleClass="sidebar-user-panel" spacing="4">
+                <Label fx:id="labelUsuario"
+                       styleClass="sidebar-user-name"
+                       text="Usuario"/>
 
-    <!-- Barra superior -->
-    <HBox spacing="10">
-        <Button text="← Regresar" onAction="#regresar"/>
-        <TextField fx:id="campoBusqueda" promptText="Buscar..." HBox.hgrow="ALWAYS"/>
-        <Button text="Agregar" onAction="#agregar"/>
-        <Button text="Editar" onAction="#editar"/>
-        <Button text="Eliminar" onAction="#eliminar"/>
-    </HBox>
+                <Label fx:id="labelRol"
+                       styleClass="sidebar-user-role"
+                       text="Rol"/>
 
-    <!-- Tabla -->
-    <TableView fx:id="tablaAlmacenes" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
-            <TableColumn fx:id="colUbicacion" text="Ubicación" prefWidth="150"/>
-            <TableColumn fx:id="colCreado" text="Creado" prefWidth="150"/>
-            <TableColumn fx:id="colModificado" text="Modificado" prefWidth="150"/>
-            <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="120"/>
-        </columns>
-    </TableView>
+                <Region prefHeight="8"/>
 
-    <!-- Footer -->
-    <Label fx:id="labelConteo" text="Total: 0"/>
-</VBox>
+                <Button text="⎋  Cerrar sesión"
+                        styleClass="btn-nav-logout"
+                        onAction="#cerrarSesion"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- ── CONTENIDO ────────────────────────────────────────────────── -->
+    <center>
+        <VBox spacing="0">
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="12">
+                <Label text="🏭  Almacenes" styleClass="topbar-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="labelConteo" styleClass="label-badge" text="0 almacen(es)"/>
+            </HBox>
+
+            <!-- Área de contenido -->
+            <VBox styleClass="content-area" spacing="20" VBox.vgrow="ALWAYS">
+
+                <!-- Barra de acciones -->
+                <HBox styleClass="action-bar" spacing="10" alignment="CENTER_LEFT">
+                    <Button text="+ Agregar" styleClass="btn-primary" onAction="#agregar"/>
+                    <Button text="✏ Editar"  styleClass="btn-secondary" onAction="#editar"/>
+                    <Button text="🗑 Eliminar" styleClass="btn-danger" onAction="#eliminar"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="campoBusqueda"
+                               promptText="🔍  Buscar almacén..."
+                               styleClass="search-field"
+                               prefWidth="240"/>
+                </HBox>
+
+                <!-- Tabla de almacenes -->
+                <TableView fx:id="tablaAlmacenes"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-table-cell-border-color: transparent;">
+
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="60"
+                                     style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="220"/>
+                        <TableColumn fx:id="colUbicacion" text="Ubicación" prefWidth="220"/>
+                        <TableColumn fx:id="colCreado" text="Fecha de creación" prefWidth="180"/>
+                        <TableColumn fx:id="colModificado" text="Última modificación" prefWidth="180"/>
+                        <TableColumn fx:id="colUsuario" text="Último usuario" prefWidth="140"/>
+                    </columns>
+
+                    <placeholder>
+                        <Label text="No hay almacenes registrados. Haz clic en '+ Agregar' para comenzar."
+                               style="-fx-font-family: 'Segoe UI'; -fx-text-fill: #9ca3af; -fx-font-size: 13px;"/>
+                    </placeholder>
+
+                </TableView>
+
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>
